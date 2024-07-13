@@ -1,3 +1,7 @@
 .menuCategories::-webkit-scrollbar{
     display: none;
 }
+.category .active{
+    border: 3px solid tomato;
+    padding: 2px;
+}
