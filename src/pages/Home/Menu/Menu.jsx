@@ -9,7 +9,7 @@ const Menu = () => {
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await fetch('categories.json');
+            const res = await fetch('http://localhost:5000/categories');
             const data = await res.json();
             setCategoryItem(data);
         };

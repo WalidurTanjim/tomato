@@ -13,7 +13,7 @@ const AllDishes = () => {
         <section>
             <h1 className='text-2xl font-medium'>Top dishes near you</h1>
 
-            <section className='allDishes min-w-[100%] my-5 grid gap-5 grid-cols-1 md:grid-cols-4'>
+            <section className='allDishes min-w-[100%] my-5 grid gap-5 grid-cols-1 md:grid-cols-3'>
                 {
                     category === "All" ? 
                     menu.map(dish => <DishItem key={dish._id} dish={dish}></DishItem>) :

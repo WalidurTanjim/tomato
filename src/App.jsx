@@ -4,13 +4,17 @@ import Main from './layout/Main'
 import Home from './pages/Home/Home/Home'
 import Menu from './pages/Menu/Menu'
 import Contact from './pages/Contact/Contact'
+import Signin from './pages/features/Signin/Signin'
+import Signup from './pages/features/Signup/Signup'
 
 function App() {
   const router = createBrowserRouter([
     {path: '/', element: <Main></Main>, children: [
       {path: '/', element: <Home></Home>},
       {path: '/menu', element: <Menu></Menu>},
-      {path: '/contact', element: <Contact></Contact>}
+      {path: '/contact', element: <Contact></Contact>},
+      {path: '/signin', element: <Signin></Signin>},
+      {path: '/signup', element: <Signup></Signup>}
     ]}
   ])
 

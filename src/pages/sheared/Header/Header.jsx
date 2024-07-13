@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Bars3CenterLeftIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { Bars3CenterLeftIcon, MagnifyingGlassIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 
 const Header = () => {
     const [bars, setBars] = useState(false);
@@ -20,7 +20,7 @@ const Header = () => {
             <div className='flex justify-center items-center'>
                 <Link className='py-2 px-4'><MagnifyingGlassIcon className='w-6 text-zinc-600 hover:text-[#ed6436]'></MagnifyingGlassIcon></Link>
                 <Link className='py-2 px-4'><ShoppingCartIcon className='w-6 text-zinc-600 hover:text-[#ed6436]'></ShoppingCartIcon></Link>
-                <Link><p className='py-2 px-5 border border-[#ed6436] text-[#ed6436] font-medium rounded-full hover:text-[#da3a05] hover:border-[#da3a05] active:bg-[#f8eae5] text-sm'>Sign in</p></Link>
+                <Link to="/signin"><p className='py-2 px-5 border border-[#ed6436] text-[#ed6436] font-medium rounded-full hover:text-[#da3a05] hover:border-[#da3a05] active:bg-[#f8eae5] text-sm'>Sign in</p></Link>
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ const useMenu = () => {
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await axios.get('dishes.json');
+            const res = await axios.get('http://localhost:5000/dishes');
            setMenu(res.data);
         };
         fetchData();
