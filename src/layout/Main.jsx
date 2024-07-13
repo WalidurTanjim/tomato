@@ -10,7 +10,7 @@ const Main = () => {
             <div className="container mx-auto px-5 mx:px-0">
                 {/* <Outlet></Outlet> */}
             </div>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </div>
     );
 };
