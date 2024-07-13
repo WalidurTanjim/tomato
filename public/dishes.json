@@ -1,0 +1,290 @@
+[
+    {
+        "_id": "66923f500c1aae55768db21f",
+        "name": "Greek salad",
+        "image": "https://i.ibb.co/5knSLB8/food-1.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Salad",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50cebd861d3cb4c0cd",
+        "name": "Veg salad",
+        "image": "https://i.ibb.co/pPFPm49/food-2.png",
+        "price": 18,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Salad",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5069465a46b544d1e5",
+        "name": "Clover Salad",
+        "image": "https://i.ibb.co/6Pv45Nf/food-3.png",
+        "price": 16,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Salad",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50b0e9ef83acfb4628",
+        "name": "Chicken Salad",
+        "image": "https://i.ibb.co/njBVc0f/food-4.png",
+        "price": 24,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Salad",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50428f1c46c049ba84",
+        "name": "Lasagna Rolls",
+        "image": "https://i.ibb.co/55ddLRy/food-5.png",
+        "price": 14,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Rolls",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50a00d97d2b254756f",
+        "name": "Peri Peri Rolls",
+        "image": "https://i.ibb.co/JmW2sJz/food-6.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Rolls",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50b762cd887283f078",
+        "name": "Chicken Rolls",
+        "image": "https://i.ibb.co/jz9mpfJ/food-7.png",
+        "price": 20,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Rolls",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5032f10b46ca3c8c67",
+        "name": "Veg Rolls",
+        "image": "https://i.ibb.co/X8tC33d/food-8.png",
+        "price": 15,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Rolls",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f507439a7d1b75d2327",
+        "name": "Ripple Ice Cream",
+        "image": "https://i.ibb.co/djBBSVt/food-9.png",
+        "price": 14,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Deserts",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5099eb769a8e9e0e7b",
+        "name": "Fruit Ice Cream",
+        "image": "https://i.ibb.co/fG42xLW/food-10.png",
+        "price": 22,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Deserts",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5045fbd253ca554a78",
+        "name": "Jar Ice Cream",
+        "image": "https://i.ibb.co/1b8TzV1/food-11.png",
+        "price": 10,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Deserts",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5002abc3b1b8b13656",
+        "name": "Vanilla Ice Cream",
+        "image": "https://i.ibb.co/RcDGkZh/food-12.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Deserts",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f500372609618c8ed85",
+        "name": "Chicken Sandwich",
+        "image": "https://i.ibb.co/YBZ148Z/food-13.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Sandwich",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50f78668e73b098861",
+        "name": "Vegan Sandwich",
+        "image": "https://i.ibb.co/8rw1LcM/food-14.png",
+        "price": 18,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Sandwich",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f509efe76c225c6ca9e",
+        "name": "Grilled Sandwich",
+        "image": "https://i.ibb.co/bBXs8LJ/food-15.png",
+        "price": 16,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Sandwich",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f506ba01d2ea05ae72d",
+        "name": "Bread Sandwich",
+        "image": "https://i.ibb.co/5hNxvDh/food-16.png",
+        "price": 24,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Sandwich",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50c7accb3ea2bb908c",
+        "name": "Cup Cake",
+        "image": "https://i.ibb.co/2gPvRbg/food-17.png",
+        "price": 14,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Cake",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f505ba694293b88ebc8",
+        "name": "Vegan Cake",
+        "image": "https://i.ibb.co/6ZWVZjQ/food-18.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Cake",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50336f2b6a129ad469",
+        "name": "Butterscotch Cake",
+        "image": "https://i.ibb.co/Z2gp4P8/food-19.png",
+        "price": 20,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Cake",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50fbc118b2877ed93d",
+        "name": "Sliced Cake",
+        "image": "https://i.ibb.co/c2kDSj4/food-20.png",
+        "price": 15,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Cake",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f505aa03e819ce07779",
+        "name": "Garlic Mushroom ",
+        "image": "https://i.ibb.co/XkKPQdH/food-21.png",
+        "price": 14,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pure Veg",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50db01eab678d131cf",
+        "name": "Fried Cauliflower",
+        "image": "https://i.ibb.co/th1kMqW/food-22.png",
+        "price": 22,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pure Veg",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50c5c0a386c25d5826",
+        "name": "Mix Veg Rice",
+        "image": "https://i.ibb.co/NVXgF8L/food-23.png",
+        "price": 10,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pure Veg",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50c2dba73ef56eb741",
+        "name": "Rice Zucchini",
+        "image": "https://i.ibb.co/V9Nwghh/food-24.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pure Veg",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f507d02047a98e732db",
+        "name": "Cheese Pasta",
+        "image": "https://i.ibb.co/C9Xf03b/food-25.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pasta",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f509fe66ffd5b01d30b",
+        "name": "Tomato Pasta",
+        "image": "https://i.ibb.co/tBfJrsd/food-26.png",
+        "price": 18,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pasta",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f508e84f28b0306514f",
+        "name": "Creamy Pasta",
+        "image": "https://i.ibb.co/jbVTmmH/food-27.png",
+        "price": 16,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pasta",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5046bacf4a82e66809",
+        "name": "Chicken Pasta",
+        "image": "https://i.ibb.co/PFFph5w/food-28.png",
+        "price": 24,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Pasta",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5097532468e6ea18da",
+        "name": "Butter Noodles",
+        "image": "https://i.ibb.co/gD7jrcg/food-29.png",
+        "price": 14,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Noodles",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50e67ec269d5f7e0ba",
+        "name": "Veg Noodles",
+        "image": "https://i.ibb.co/XLJnLxQ/food-30.png",
+        "price": 12,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Noodles",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f50736a0251659021b4",
+        "name": "Semen Noodles",
+        "image": "https://i.ibb.co/ySD3BDx/food-31.png",
+        "price": 20,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Noodles",
+        "ratings": 4.3
+    },
+    {
+        "_id": "66923f5048496acf9969e7ae",
+        "name": "Cooked Noodles",
+        "image": "https://i.ibb.co/x3scQqG/food-32.png",
+        "price": 15,
+        "description": "Food provides essential nutrients for overall health and well-being",
+        "category": "Noodles",
+        "ratings": 4.3
+    }
+]

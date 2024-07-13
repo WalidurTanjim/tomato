@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Menu.css'
 import { menu_list } from '../../../assets/frontend_assets/assets.js'
 import useAuth from '../../../hooks/useAuth.jsx';
 
 const Menu = () => {
+    const [categoryItem, setCategoryItem] = useState([]);
     const { category, setCategory } = useAuth();
+
+    useEffect(() => {
+        const fetchData = async() => {
+            const res = await fetch('categories.json');
+            const data = await res.json();
+            setCategoryItem(data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <section className='my-10'>
@@ -15,11 +25,15 @@ const Menu = () => {
 
             <section className="menuCategories min-w-[100%] flex items-center justify-between gap-[30px] text-center overflow-x-scroll mx-[20px] my-5">
                 {
-                    menu_list.map((item, idx) => {
+                    categoryItem.map((item, idx) => {
+                        const { menu_name, menu_image } = item;
+                        {/* console.log(item, menu_name, menu_image) */}
+
                         return (
-                            <div onClick={() => setCategory(prev => prev === item.menu_name ? "All" : item.menu_name)} key={idx} className='category'>
-                                <img src={item.menu_image} alt="" className={`${category === item.menu_name ? 'active' : ''} w-[7.5vw] min-w-[80px] cursor-pointer rounded-[50%] ease-in-out duration-100`} />
-                                <h2 className='font-medium text-sm text-zinc-900 cursor-pointer mt-3'>{item.menu_name}</h2>
+                            <div onClick={() => setCategory(prev => prev === menu_name ? "All" : menu_name)} key={idx} className='category h-auto'>
+                                <img src={menu_image} alt="Category Img" className={`${category === menu_name ? 'active' : ''} w-[7.5vw] min-w-[80px] h-[7.5vh] min-h-[80px] cursor-pointer rounded-[50%] ease-in-out duration-100`} />
+
+                                <h2 className='font-medium text-sm text-zinc-900 cursor-pointer mt-3'>{menu_name}</h2>
                             </div>
                         )
                         {/* category end */}
@@ -27,6 +41,8 @@ const Menu = () => {
                 }
             </section>
             {/* menuCategories end */}
+
+            <hr className='categoryHr' />
         </section>
     );
 };

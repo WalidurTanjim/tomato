@@ -276,7 +276,7 @@ export const food_list = [
         category: "Pure Veg"
     }, {
         _id: "23",
-        name: "Mix Veg Pulao",
+        name: "Mix Veg Rice",
         image: food_23,
         price: 10,
         description: "Food provides essential nutrients for overall health and well-being",
@@ -320,7 +320,7 @@ export const food_list = [
         category: "Pasta"
     }, {
         _id: "29",
-        name: "Buttter Noodles",
+        name: "Butter Noodles",
         image: food_29,
         price: 14,
         description: "Food provides essential nutrients for overall health and well-being",
@@ -334,7 +334,7 @@ export const food_list = [
         category: "Noodles"
     }, {
         _id: "31",
-        name: "Somen Noodles",
+        name: "Semen Noodles",
         image: food_31,
         price: 20,
         description: "Food provides essential nutrients for overall health and well-being",
