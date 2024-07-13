@@ -8,7 +8,7 @@ const Main = () => {
         <div>
             <Header></Header>
             <div className="container mx-auto px-5 mx:px-0">
-                {/* <Outlet></Outlet> */}
+                <Outlet></Outlet>
             </div>
             <Footer></Footer>
         </div>
