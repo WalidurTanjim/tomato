@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import './Signin.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Signin = () => {
+    const { loginUser } = useAuth();
     const [showPass, setShowPass] = useState(false);
+    const [errMsg, setErrMsg] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const triggeredLocation = location.state?.from.pathname;
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        setErrMsg('');
+
+        // loginUser
+        loginUser(data.email, data.password)
+        .then(() => {
+            navigate(triggeredLocation || '/');
+            console.log('Sign in successfully.');
+        })
+        .catch(err => {
+            console.error(err);
+            setErrMsg(err.message);
+        })
+    };
 
     return (
         <section className='w-full md:w-[500px] mx-auto my-10'>
@@ -39,6 +59,8 @@ const Signin = () => {
                 </div>
                 {/* show password div end */}
 
+                {errMsg ? <p className='text-sm text-red-600 font-medium'>{errMsg}</p> : undefined}
+
                 <input type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3' value="Signin" />
 
                 <p className='text-sm text-center font-medium mt-3 text-zinc-700'>Don't Have An Account? <Link to="/signup" className='text-orange-500 hover:text-orange-600 active:text-orange-500'>Signup</Link></p>
@@ -46,8 +68,8 @@ const Signin = () => {
 
             <hr className='signinHr' />
 
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-red-500 hover:bg-red-600 active:bg-red-500 outline-none mb-3'>Signin with Google</button>
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 outline-none mb-3'>Signin with Facebook</button>
+            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-red-500 hover:bg-red-600 active:bg-red-500 outline-none mb-3'>Continue with Google</button>
+            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 outline-none mb-3'>Continue with Facebook</button>
         </section>
     );
 };

@@ -1,12 +1,72 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./Signup.css";
+import useAuth from '../../../hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
+
+// react-hot-toast alert
+const notify = () => toast.success('Verification mail send!');
 
 const Signup = () => {
+    const [errMsg, setErrMsg] = useState('');
+    const { createUser, userProfileUpdate, verifyEmail } = useAuth();
     const [showPass, setShowPass] = useState(false);
+    const passRegEx = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const navigate = useNavigate();
+    const location = useLocation();
+    const triggeredLocation = location.state?.from.pathname;
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        setErrMsg('');
+
+        if(!passRegEx.test(data.createPassword)){
+            return;
+        }
+
+        if(data.repeatPassword !== data.createPassword){
+            return;
+        }
+        
+        // console.log(data);
+        createUser(data.email, data.repeatPassword)
+        .then(result => {
+            const user = result.user;
+            userProfileUpdateHandler(user, data.fullName)
+            verifyEmailHandler(user);
+            navigate(triggeredLocation || '/');
+            console.log('Signed up user: ', user);
+        })
+        .catch(err => {
+            console.error(err);
+            setErrMsg(err.message)
+        })
+    };
+
+    // userProfileUpdateHandler
+    const userProfileUpdateHandler = (user, name) => {
+        userProfileUpdate(user, name)
+        .then(() => {
+            console.log('Profile updated');
+        })
+        .catch(err => {
+            console.error(err)
+            setErrMsg(err.message);
+        })
+    }
+
+    // verifyEmailHandler
+    const verifyEmailHandler = user => {
+        verifyEmail(user)
+        .then(() => {
+            notify();
+        })
+        .catch(err => {
+            console.error(err);
+            setErrMsg(err.message);
+        })
+    }
 
     return (
         <section className='w-full md:w-[500px] mx-auto my-10'>
@@ -38,9 +98,10 @@ const Signup = () => {
                         Create Password
                     </label>
                     <div className="mt-1">
-                        <input id="createPassword" type={showPass ? 'text' : 'password'} autoComplete="off" className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 outline-none sm:text-sm sm:leading-6" {...register("createPassword", { required: true })} placeholder='Create Password' />
+                        <input id="createPassword" type={showPass ? 'text' : 'password'} autoComplete="off" className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 outline-none sm:text-sm sm:leading-6" {...register("createPassword", { required: true }, { pattern: /(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}/ })} placeholder='Create Password' />
                     </div>
                 </div>
+                {errors.createPassword && <span className='text-sm font-medium text-red-600'>Password should be uppercase, lowercase, digits, special chars and at least 6 chars</span>}
                 {/* createPassword field end */}
 
                 <div className='mb-3'>
@@ -51,6 +112,7 @@ const Signup = () => {
                         <input id="repeatPassword" type={showPass ? 'text' : 'password'} autoComplete="off" className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 outline-none sm:text-sm sm:leading-6" {...register("repeatPassword", { required: true })} placeholder='Repeat Password' />
                     </div>
                 </div>
+                {errors.repeatPassword && <span className='text-sm font-medium text-red-600'>Both are not equal</span>}
                 {/* repeatPassword field end */}
 
                 <div className='mb-3'>
@@ -69,15 +131,19 @@ const Signup = () => {
                 </div>
                 {/* show password div end */}
 
-                <input type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3' value="Signup" />
+                {errMsg ? <p className='text-sm text-red-600 font-medium'>{errMsg}</p> : undefined}
+
+                <input type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500 mt-3' value="Signup" />
 
                 <p className='text-sm text-center font-medium mt-3 text-zinc-700'>Already Have An Account? <Link to="/signin" className='text-orange-500 hover:text-orange-600 active:text-orange-500'>Signin</Link></p>
             </form>
+            
 
             <hr className='signupHr' />
 
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-red-500 hover:bg-red-600 active:bg-red-500 outline-none mb-3'>Signin with Google</button>
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 outline-none mb-3'>Signin with Facebook</button>
+            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-red-500 hover:bg-red-600 active:bg-red-500 outline-none mb-3'>Signup with Google</button>
+            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 outline-none mb-3'>Signup with Facebook</button>
+            <Toaster />
         </section>
     );
 };

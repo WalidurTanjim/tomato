@@ -1,12 +1,13 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import useAxiosPublic from './useAxiosPublic';
 
 const useMenu = () => {
     const [menu, setMenu] = useState([]);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await axios.get('http://localhost:5000/dishes');
+            const res = await axiosPublic.get('/dishes');
            setMenu(res.data);
         };
         fetchData();
