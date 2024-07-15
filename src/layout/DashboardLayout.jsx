@@ -5,7 +5,7 @@ import { HomeIcon, PlusIcon, ListBulletIcon, UserGroupIcon, CalendarIcon, Bankno
 import './styles.css';
 
 const DashboardLayout = () => {
-    const isAdmin = true;
+    const isAdmin = false;
 
     return (
         <div>
@@ -63,7 +63,7 @@ const DashboardLayout = () => {
                                         </NavLink>
 
                                         <NavLink to='/dashboard/bookings'>
-                                            <li className='text-zinc-700 flex items-center py-2 mb-1 ps-2'><BookmarkIcon className="me-2 size-4" /> My Bookings</li>
+                                            <li className='text-zinc-700 flex items-center py-2 mb-1 ps-2'><BookmarkIcon className="me-2 size-4" /> My Orders</li>
                                         </NavLink>
                                     </ul>
                                 </div>
@@ -91,7 +91,7 @@ const DashboardLayout = () => {
                     {/* website routes */}
                 </div>
 
-                <div className='min-w-[650px] w-full md:ps-5'>
+                <div className='min-w-[700px] w-full md:ps-5'>
                     <Outlet></Outlet>
                 </div>
             </div>

@@ -18,8 +18,9 @@ const DishItem = ({ dish }) => {
 
     // handleAddToCart
     const handleAddToCart = async(dishItem) => {
+        const newDish = { email: user?.email, image: dishItem.image, name: dishItem.name, category: dishItem.category, price: dishItem.price, ratings: dishItem.ratings, description: dishItem.description };
         if(user){
-            const res = await axiosSecure.post('/carts', dishItem)
+            const res = await axiosSecure.post('/carts', newDish)
             console.log(res.data);
             if(res.data.insertedId){
                 toast.success('Dish added to cart');
