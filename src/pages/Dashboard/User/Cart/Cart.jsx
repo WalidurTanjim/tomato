@@ -1,24 +1,39 @@
 import React from 'react';
 import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import useCart from '../../../../hooks/useCart';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const Cart = () => {
-    const axiosPublic = useAxiosPublic();
+    const [cart, refetch] = useCart();
+    const axiosSecure = useAxiosSecure();
 
-    // load dish using tanStackQuery
-    const { data: cart = [], refetch } = useQuery({
-        queryKey: ['cart'],
-        queryFn: async() => {
-            const res = await axiosPublic.get('/carts');
-            return res.data;
-        }
-    })
+    // deleteHandler
+    const deleteHandler = dish => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async(result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/carts/${dish._id}`)
+                if (res.data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${dish.name} deleted successfully.`);
+                }
+            }
+        });
+    }
 
     return (
         <div>
-            <h1 className='text-2xl font-medium mb-5'>Total dish: {cart?.length}</h1>
+            <h1 className='px-5 text-2xl font-medium mb-5'>Total dish: {cart?.length}</h1>
 
             <div className="overflow-x-auto">
                 <table className="table">
@@ -36,10 +51,10 @@ const Cart = () => {
                         {
                             cart?.map(dish => {
                                 const { image, name, category, price } = dish;
-                                console.log(dish);
+                                {/* console.log(dish); */ }
 
                                 return (
-                                    <tr>
+                                    <tr key={dish._id}>
                                         <td>
                                             <div className="flex items-center gap-3">
                                                 <div className="avatar">
@@ -59,7 +74,7 @@ const Cart = () => {
                                         <td className='font-medium text-orange-600'>${price}</td>
                                         <th className='flex items-center'>
                                             <Link className='p-1 mx-1 rounded-full border border-green-500 bg-green-100 hover:bg-green-200 active:bg-green-100 text-green-500 hover:text-green-600 active:text-green-500'><PencilSquareIcon className="size-5" /></Link>
-                                            <span className='p-1 mx-1 rounded-full border border-red-500 bg-red-100 hover:bg-red-200 active:bg-red-100 text-red-500 hover:text-red-600 active:text-red-500'><TrashIcon className="size-5" /></span>
+                                            <span className='p-1 mx-1 rounded-full border border-red-500 bg-red-100 hover:bg-red-200 active:bg-red-100 text-red-500 hover:text-red-600 active:text-red-500' onClick={() => deleteHandler(dish)}><TrashIcon className="size-5" /></span>
                                         </th>
                                     </tr>
                                 )
@@ -70,6 +85,7 @@ const Cart = () => {
                 </table>
                 {/* table */}
             </div>
+            <Toaster />
         </div>
     );
 };
