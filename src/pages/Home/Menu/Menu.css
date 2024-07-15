@@ -1,4 +1,4 @@
-.menuCategories::-webkit-scrollbar{
+#menuCategories::-webkit-scrollbar{
     display: none;
 }
 .category .active{

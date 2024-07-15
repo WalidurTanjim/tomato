@@ -9,6 +9,8 @@ import Signup from './pages/features/Signup/Signup'
 import DashboardLayout from './layout/DashboardLayout'
 import Cart from './pages/Dashboard/User/Cart/Cart'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
+import AddItem from './pages/Dashboard/Admin/AddItem/AddItem'
+import ManageItems from './pages/Dashboard/Admin/ManageItems/ManageItems'
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +22,11 @@ function App() {
       {path: '/signup', element: <Signup></Signup>}
     ]},
     {path: '/dashboard', element: <DashboardLayout></DashboardLayout>, children: [
+      // admin related routes
+      {path: '/dashboard/addItems', element: <PrivateRoute><AddItem></AddItem></PrivateRoute>},
+      {path: '/dashboard/manageItems', element: <PrivateRoute><ManageItems></ManageItems></PrivateRoute>},
+
+      // user related routes
       {path: '/dashboard/cart', element: <PrivateRoute><Cart></Cart></PrivateRoute>}
     ]}
   ])

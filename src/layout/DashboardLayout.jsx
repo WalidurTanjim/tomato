@@ -31,7 +31,7 @@ const DashboardLayout = () => {
                                             <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><ListBulletIcon className="me-2 size-4" /> Manage Items</li>
                                         </NavLink>
 
-                                        <NavLink to='/dashboard/cart'>
+                                        <NavLink to='/dashboard/manageBookings'>
                                             <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><BookmarkIcon className="me-2 size-4" /> Manage Bookings</li>
                                         </NavLink>
 
@@ -91,7 +91,7 @@ const DashboardLayout = () => {
                     {/* website routes */}
                 </div>
 
-                <div className='min-w-[700px] w-full md:ps-5'>
+                <div className='min-w-[700px] w-full'>
                     <Outlet></Outlet>
                 </div>
             </div>

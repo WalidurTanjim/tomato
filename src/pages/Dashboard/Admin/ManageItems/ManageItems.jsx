@@ -1,13 +1,13 @@
 import React from 'react';
-import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
+import useMenu from '../../../../hooks/useMenu';
 import { Link } from 'react-router-dom';
-import useCart from '../../../../hooks/useCart';
-import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
-const Cart = () => {
-    const [cart, refetch] = useCart();
+const ManageItems = () => {
+    const [menu, refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
 
     // deleteHandler
@@ -22,7 +22,8 @@ const Cart = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async(result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.delete(`/carts/${dish._id}`)
+                const res = await axiosSecure.delete(`/dishes/${dish._id}`)
+                // console.log(dish, res.data);
                 if (res.data.deletedCount > 0) {
                     refetch();
                     toast.success(`${dish.name} deleted successfully.`);
@@ -33,9 +34,8 @@ const Cart = () => {
 
     return (
         <div className='px-5'>
-            <div className="flex items-center justify-between mb-5">
-                <h1 className='px-5 text-2xl font-medium'>Total dish: {cart?.length}</h1>
-                <Link><button className='border-none outline-none rounded-md py-1 px-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500'>Pay</button></Link>
+            <div className='flex items-center justify-between mb-5'>
+                <h1 className='text-2xl font-medium'>Total Items: {menu?.length}</h1>
             </div>
 
             <div className="overflow-x-auto">
@@ -53,7 +53,7 @@ const Cart = () => {
 
                     <tbody>
                         {
-                            cart?.map((dish, idx) => {
+                            menu?.map((dish, idx) => {
                                 const { image, name, category, price } = dish;
                                 {/* console.log(dish); */ }
 
@@ -78,7 +78,7 @@ const Cart = () => {
                                         </td>
                                         <td className='font-medium text-orange-600'>${price}</td>
                                         <th className='flex items-center'>
-                                            {/* <Link className='p-1 mx-1 rounded-full border border-green-500 bg-green-100 hover:bg-green-200 active:bg-green-100 text-green-500 hover:text-green-600 active:text-green-500'><PencilSquareIcon className="size-5" /></Link> */}
+                                            <Link className='p-1 mx-1 rounded-full border border-green-500 bg-green-100 hover:bg-green-200 active:bg-green-100 text-green-500 hover:text-green-600 active:text-green-500'><PencilSquareIcon className="size-5" /></Link>
                                             <span className='p-1 mx-1 rounded-full border border-red-500 bg-red-100 hover:bg-red-200 active:bg-red-100 text-red-500 hover:text-red-600 active:text-red-500' onClick={() => deleteHandler(dish)}><TrashIcon className="size-5" /></span>
                                         </th>
                                     </tr>
@@ -95,4 +95,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default ManageItems;

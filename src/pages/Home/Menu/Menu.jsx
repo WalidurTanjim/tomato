@@ -23,7 +23,7 @@ const Menu = () => {
                 <p className='text-sm text-zinc-700 font-medium mt-2'>Choose from a diverse menu featuring a delectable array of dishes. Our mission to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
             </section>
 
-            <section className="menuCategories min-w-[100%] flex items-center justify-between gap-[30px] text-center overflow-x-scroll mx-[20px] my-5">
+            <section id="menuCategories" className="menuCategories min-w-[100%] flex items-center justify-between gap-[30px] text-center overflow-x-scroll mx-[20px] my-5">
                 {
                     categoryItem.map((item, idx) => {
                         const { menu_name, menu_image } = item;
