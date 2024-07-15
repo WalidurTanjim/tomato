@@ -23,7 +23,7 @@ const Header = () => {
         <div className='container mx-auto px-5 md:px-0 py-6 flex justify-between items-center relative'>
             <Bars3CenterLeftIcon className='w-6 md:hidden' onClick={() => setBars(!bars)}></Bars3CenterLeftIcon>
 
-            <h1 className='font-semibold text-2xl text-[#ed6436]'>Tomato.</h1>
+            <Link to='/'><h1 className='logo font-semibold text-2xl text-[#ed6436]'>Tomato.</h1></Link>
 
             <ul className='text-zinc-600 hidden md:flex justify-center items-center'>
                 <NavLink to='/'><li className='py-2 px-4 hover:text-[#ed6436]'>home</li></NavLink>
@@ -43,8 +43,8 @@ const Header = () => {
 
             <div className={`${profileFeatures ? 'top-[70px]' : user===null ? '-top-[700px]' : '-top-[700px]'} absolute border rounded-md w-[200px] right-0 bg-white`}>
                 <ul>
-                    <Link><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Your Profile</li></Link>
-                    <Link><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Dashboard</li></Link>
+                    <Link to='/dashboard/profile'><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Your Profile</li></Link>
+                    <Link to='/dashboard/cart'><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Dashboard</li></Link>
                     <li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full' onClick={logOutHandler}>Sign out</li>
                 </ul>
             </div>

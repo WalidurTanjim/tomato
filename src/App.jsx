@@ -6,6 +6,9 @@ import Menu from './pages/Menu/Menu'
 import Contact from './pages/Contact/Contact'
 import Signin from './pages/features/Signin/Signin'
 import Signup from './pages/features/Signup/Signup'
+import DashboardLayout from './layout/DashboardLayout'
+import Cart from './pages/Dashboard/User/Cart/Cart'
+import PrivateRoute from './PrivateRoute/PrivateRoute'
 
 function App() {
   const router = createBrowserRouter([
@@ -15,6 +18,9 @@ function App() {
       {path: '/contact', element: <Contact></Contact>},
       {path: '/signin', element: <Signin></Signin>},
       {path: '/signup', element: <Signup></Signup>}
+    ]},
+    {path: '/dashboard', element: <DashboardLayout></DashboardLayout>, children: [
+      {path: '/dashboard/cart', element: <PrivateRoute><Cart></Cart></PrivateRoute>}
     ]}
   ])
 
