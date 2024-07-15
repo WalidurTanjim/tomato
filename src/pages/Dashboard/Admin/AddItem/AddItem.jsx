@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddItem = () => {
     const axiosSecure = useAxiosSecure();
@@ -9,6 +10,9 @@ const AddItem = () => {
         axiosSecure.post('/dishes', data)
         .then(res => {
             console.log(res.data);
+            if(res.data.insertedId){
+                toast.success(`${data.name} inserted successfully`);
+            }
         })
 
         console.log(data);
@@ -85,6 +89,7 @@ const AddItem = () => {
 
                 <input  type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500' value="Add Item" />
             </form>
+            <Toaster></Toaster>
         </section>
     );
 };
