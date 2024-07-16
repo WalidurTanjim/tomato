@@ -2,20 +2,37 @@ import React from 'react';
 import { useForm } from "react-hook-form"
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import toast, { Toaster } from 'react-hot-toast';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+
+const img_api_key = import.meta.env.VITE_image_api_key;
+const img_host_api = `https://api.imgbb.com/1/upload?key=${img_api_key}`;
 
 const AddItem = () => {
+    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
-        axiosSecure.post('/dishes', data)
-        .then(res => {
-            console.log(res.data);
-            if(res.data.insertedId){
-                toast.success(`${data.name} inserted successfully`);
+    const onSubmit = async(data) => {
+        const name = data.name;
+        const price = data.price;
+        const category = data.category;
+        const description = data.description;
+        const ratings = data.ratings;
+        const imageFile = { image: data.image[0] };
+        // console.log(data.image, imageFile)
+
+        const res = await axiosPublic.post(img_host_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
             }
         })
-
-        console.log(data);
+        // console.log(res.data);
+        if(res.data.success){
+            const dishInfo = { name, price, category, description, ratings, image: res.data.data.display_url };
+            const menuRes = await axiosSecure.post('/dishes', dishInfo)
+            if(menuRes.data.insertedId){
+                toast.success(`${dishInfo.name} added successfully`)
+            }
+        }
     }
 
     return (
@@ -39,7 +56,7 @@ const AddItem = () => {
                             price
                         </label>
                         <div className="mt-1">
-                            <input id="price" type="number" autoComplete="off" className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 outline-none sm:text-sm sm:leading-6" {...register("number", { required: true })} placeholder='Price' />
+                            <input id="price" type="number" autoComplete="off" className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 outline-none sm:text-sm sm:leading-6" {...register("price", { required: true })} placeholder='Price' />
                         </div>
                     </div>
                     {/* price field end */}
@@ -86,6 +103,15 @@ const AddItem = () => {
                     </div>
                 </div>
                 {/* description field end */}
+
+                <div className="mb-3">
+                    <label htmlFor="image" className="block text-sm font-medium leading-6 text-gray-900">
+                        Upload Image
+                    </label>
+                    <div className="mt-1">
+                        <input type="file" id="image" className='w-full px-2 py-1.5 rounded-md border' {...register("image", { required: true })} />
+                    </div>
+                </div>
 
                 <input  type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500' value="Add Item" />
             </form>
