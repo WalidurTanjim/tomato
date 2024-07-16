@@ -5,7 +5,7 @@ import { HomeIcon, PlusIcon, ListBulletIcon, UserGroupIcon, CalendarIcon, Bankno
 import './styles.css';
 
 const DashboardLayout = () => {
-    const isAdmin = true;
+    const isAdmin = false;
 
     return (
         <div>
