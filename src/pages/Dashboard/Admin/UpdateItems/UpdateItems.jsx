@@ -24,16 +24,17 @@ const UpdateItems = () => {
         console.log(res.data);
         if(res.data.success){
             const dishItem = { 
-                name: loadedData.name,
-                price: loadedData.price,
-                category: loadedData.category,
-                description: loadedData.description,
-                ratings: loadedData.ratings,
-                image: req.data.data.display_url
+                name: data.name,
+                price: data.price,
+                category: data.category,
+                description: data.description,
+                ratings: data.ratings,
+                image: res.data.data.display_url
             };
             const dishRes = await axiosSecure.put(`/dishes/${loadedData._id}`, dishItem);
-            if(dishRes.data.insertedId){
-                toast.success(`${name} updated successfully`);
+            console.log(dishRes.data)
+            if(dishRes.data.modifiedCount > 0){
+                toast.success(`${dishItem.name} updated successfully`);
             }
         }
     }
