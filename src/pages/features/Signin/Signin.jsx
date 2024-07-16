@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import './Signin.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import SocialLogin from '../../sheared/SocialLogin/SocialLogin';
 
 const Signin = () => {
     const { loginUser } = useAuth();
@@ -67,9 +68,8 @@ const Signin = () => {
             </form>
 
             <hr className='signinHr' />
-
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-red-500 hover:bg-red-600 active:bg-red-500 outline-none mb-3'>Continue with Google</button>
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 outline-none mb-3'>Continue with Facebook</button>
+            
+            <SocialLogin title="Continue"></SocialLogin>
         </section>
     );
 };

@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "./Signup.css";
 import useAuth from '../../../hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
+import SocialLogin from '../../sheared/SocialLogin/SocialLogin';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 // react-hot-toast alert
 const notify = () => toast.success('Verification mail send!');
@@ -21,51 +23,51 @@ const Signup = () => {
     const onSubmit = data => {
         setErrMsg('');
 
-        if(!passRegEx.test(data.createPassword)){
+        if (!passRegEx.test(data.createPassword)) {
             return;
         }
 
-        if(data.repeatPassword !== data.createPassword){
+        if (data.repeatPassword !== data.createPassword) {
             return;
         }
-        
+
         // console.log(data);
         createUser(data.email, data.repeatPassword)
-        .then(result => {
-            const user = result.user;
-            userProfileUpdateHandler(user, data.fullName)
-            verifyEmailHandler(user);
-            navigate(triggeredLocation || '/');
-            console.log('Signed up user: ', user);
-        })
-        .catch(err => {
-            console.error(err);
-            setErrMsg(err.message)
-        })
+            .then(result => {
+                const user = result.user;
+                userProfileUpdateHandler(user, data.fullName)
+                verifyEmailHandler(user);
+                console.log('Signed up user: ', user);
+                navigate(triggeredLocation || '/');
+            })
+            .catch(err => {
+                console.error(err);
+                setErrMsg(err.message)
+            })
     };
 
     // userProfileUpdateHandler
     const userProfileUpdateHandler = (user, name) => {
         userProfileUpdate(user, name)
-        .then(() => {
-            console.log('Profile updated');
-        })
-        .catch(err => {
-            console.error(err)
-            setErrMsg(err.message);
-        })
+            .then(() => {
+                console.log('Profile updated');
+            })
+            .catch(err => {
+                console.error(err)
+                setErrMsg(err.message);
+            })
     }
 
     // verifyEmailHandler
     const verifyEmailHandler = user => {
         verifyEmail(user)
-        .then(() => {
-            notify();
-        })
-        .catch(err => {
-            console.error(err);
-            setErrMsg(err.message);
-        })
+            .then(() => {
+                notify();
+            })
+            .catch(err => {
+                console.error(err);
+                setErrMsg(err.message);
+            })
     }
 
     return (
@@ -137,12 +139,11 @@ const Signup = () => {
 
                 <p className='text-sm text-center font-medium mt-3 text-zinc-700'>Already Have An Account? <Link to="/signin" className='text-orange-500 hover:text-orange-600 active:text-orange-500'>Signin</Link></p>
             </form>
-            
+
 
             <hr className='signupHr' />
 
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-red-500 hover:bg-red-600 active:bg-red-500 outline-none mb-3'>Signup with Google</button>
-            <button className='w-full py-2 rounded-md text-center font-medium text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 outline-none mb-3'>Signup with Facebook</button>
+            <SocialLogin title="Signup"></SocialLogin>
             <Toaster />
         </section>
     );
