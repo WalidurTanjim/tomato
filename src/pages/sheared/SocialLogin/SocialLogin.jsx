@@ -32,8 +32,8 @@ const SocialLogin = ({ title }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/');
                 }
+                navigate('/');
             })
         })
         .catch(err => {
