@@ -17,7 +17,7 @@ const DashboardLayout = () => {
                         {/* <h1 className='text-2xl text-orange-600 font-semibold mb-10'>Tomato.</h1> */}
                         {
                             isAdmin ?
-                            <div id='userAdminPanel'>
+                                <div id='userAdminPanel'>
                                     <ul className='dashboardUl'>
                                         <NavLink to='/dashboard/adminHome'>
                                             <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><HomeIcon className="me-2 size-4" /> Admin Home</li>
@@ -68,6 +68,7 @@ const DashboardLayout = () => {
                                     </ul>
                                 </div>
                         }
+                        {/* admin and user routes */}
                     </div>
                     {/* conditional items */}
 

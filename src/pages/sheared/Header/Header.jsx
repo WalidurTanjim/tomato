@@ -25,7 +25,7 @@ const Header = () => {
 
             <Link to='/'><h1 className='logo font-semibold text-2xl text-[#ed6436]'>Tomato.</h1></Link>
 
-            <ul className='text-zinc-600 hidden md:flex justify-center items-center'>
+            <ul className={`text-zinc-600 hidden md:flex justify-center items-center`}>
                 <NavLink to='/'><li className='py-2 px-4 hover:text-[#ed6436]'>home</li></NavLink>
                 <NavLink to='/menu'><li className='py-2 px-4 hover:text-[#ed6436]'>menu</li></NavLink>
                 <NavLink to='/contact'><li className='py-2 px-4 hover:text-[#ed6436]'>contact</li></NavLink>

@@ -35,6 +35,7 @@ const SocialLogin = ({ title }) => {
                 }
                 navigate('/');
             })
+            navigate('/');
         })
         .catch(err => {
             console.error(err);

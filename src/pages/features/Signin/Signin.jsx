@@ -62,7 +62,7 @@ const Signin = () => {
 
                 {errMsg ? <p className='text-sm text-red-600 font-medium'>{errMsg}</p> : undefined}
 
-                <input type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3' value="Signin" />
+                <input type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500 mt-3' value="Signin" />
 
                 <p className='text-sm text-center font-medium mt-3 text-zinc-700'>Don't Have An Account? <Link to="/signup" className='text-orange-500 hover:text-orange-600 active:text-orange-500'>Signup</Link></p>
             </form>

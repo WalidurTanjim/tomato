@@ -6,11 +6,13 @@ import useAuth from '../../../hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from '../../sheared/SocialLogin/SocialLogin';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 // react-hot-toast alert
 const notify = () => toast.success('Verification mail send!');
 
 const Signup = () => {
+    const axiosPublic = useAxiosPublic();
     const [errMsg, setErrMsg] = useState('');
     const { createUser, userProfileUpdate, verifyEmail } = useAuth();
     const [showPass, setShowPass] = useState(false);
@@ -35,10 +37,28 @@ const Signup = () => {
         createUser(data.email, data.repeatPassword)
             .then(result => {
                 const user = result.user;
-                userProfileUpdateHandler(user, data.fullName)
-                verifyEmailHandler(user);
-                console.log('Signed up user: ', user);
-                navigate(triggeredLocation || '/');
+                const userInfo = {
+                    email: user.email,
+                    name: user.displayName
+                };
+                console.log(userInfo)
+                axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    console.log('Account created menually:', res.data);
+                    if(res.data.insertedId){
+                        userProfileUpdateHandler(user, data.fullName)
+                        verifyEmailHandler(user);
+                        console.log('Signed up user: ', user, userInfo);
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Account created successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate(triggeredLocation || '/');
+                    }
+                })
             })
             .catch(err => {
                 console.error(err);
