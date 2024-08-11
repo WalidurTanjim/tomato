@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute'
 import AddItem from './pages/Dashboard/Admin/AddItem/AddItem'
 import ManageItems from './pages/Dashboard/Admin/ManageItems/ManageItems'
 import UpdateItems from './pages/Dashboard/Admin/UpdateItems/UpdateItems'
+import AllUsers from './pages/Dashboard/Admin/AllUsers/AllUsers'
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,7 @@ function App() {
       {path: '/dashboard/addItems', element: <PrivateRoute><AddItem></AddItem></PrivateRoute>},
       {path: '/dashboard/manageItems', element: <PrivateRoute><ManageItems></ManageItems></PrivateRoute>},
       {path: '/dashboard/updateItems/:id', element: <PrivateRoute><UpdateItems></UpdateItems></PrivateRoute>, loader: ({params}) => fetch(`http://localhost:5000/dishes/${params.id}`)},
+      {path: '/dashboard/users', element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>},
 
       // user related routes
       {path: '/dashboard/cart', element: <PrivateRoute><Cart></Cart></PrivateRoute>}
