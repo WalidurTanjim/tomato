@@ -33,7 +33,7 @@ const DishItem = ({ dish }) => {
     return (
         <section className='dishItem border rounded-md ease-in-out duration-300 hover:scale-[1.02]'>
             <div className='relative w-full h-[200px] rounded-t-md'>
-                <img src={image} alt="Dish Image" className='w-full h-full rounded-t-md' />
+                <img src={image ? image : undefined} alt="Dish Image" className='w-full h-full rounded-t-md' />
                 <span className='absolute bottom-5 right-5 p-2 rounded-full bg-white'><PlusIcon className='w-6' onClick={() => handleAddToCart(dish)}></PlusIcon></span>
             </div>
 

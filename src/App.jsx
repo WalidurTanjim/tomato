@@ -13,6 +13,7 @@ import AddItem from './pages/Dashboard/Admin/AddItem/AddItem'
 import ManageItems from './pages/Dashboard/Admin/ManageItems/ManageItems'
 import UpdateItems from './pages/Dashboard/Admin/UpdateItems/UpdateItems'
 import AllUsers from './pages/Dashboard/Admin/AllUsers/AllUsers'
+import Profile from './pages/Dashboard/Profile/Profile'
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,7 @@ function App() {
       {path: '/', element: <Home></Home>},
       {path: '/menu', element: <Menu></Menu>},
       {path: '/contact', element: <Contact></Contact>},
+      {path: '/profile', element: <PrivateRoute><Profile></Profile></PrivateRoute>},
       {path: '/signin', element: <Signin></Signin>},
       {path: '/signup', element: <Signup></Signup>}
     ]},

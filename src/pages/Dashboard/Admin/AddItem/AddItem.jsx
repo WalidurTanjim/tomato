@@ -18,21 +18,31 @@ const AddItem = () => {
         const description = data.description;
         const ratings = data.ratings;
         const imageFile = { image: data.image[0] };
+        const dishInfo = { name, price, category, description, ratings };
         // console.log(data.image, imageFile)
 
-        const res = await axiosPublic.post(img_host_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        })
+        // const res = await axiosSecure.post(img_host_api, imageFile, {
+        //     headers: {
+        //         'content-type': 'multipart/form-data'
+        //     },
+        //     withCredentials: true
+        // })
         // console.log(res.data);
-        if(res.data.success){
-            const dishInfo = { name, price, category, description, ratings, image: res.data.data.display_url };
-            const menuRes = await axiosSecure.post('/dishes', dishInfo)
-            if(menuRes.data.insertedId){
-                toast.success(`${dishInfo.name} added successfully`)
-            }
+
+        // if(res.data.success){
+        //     const dishInfo = { name, price, category, description, ratings };
+        //     // const dishInfo = { name, price, category, description, ratings, image: res.data.data.display_url };
+        //     const menuRes = await axiosSecure.post('/dishes', dishInfo)
+        //     if(menuRes.data.insertedId){
+        //         toast.success(`${dishInfo.name} added successfully`)
+        //     }
+        // }
+
+        const menuRes = await axiosSecure.post('/dishes', dishInfo)
+        if(menuRes.data.insertedId){
+            toast.success(`${dishInfo.name} added successfully`)
         }
+
     }
 
     return (
@@ -109,7 +119,8 @@ const AddItem = () => {
                         Upload Image
                     </label>
                     <div className="mt-1">
-                        <input type="file" id="image" className='w-full px-2 py-1.5 rounded-md border' {...register("image", { required: true })} />
+                        <input type="file" id="image" className='w-full px-2 py-1.5 rounded-md border' {...register("image")} />
+                        {/* <input type="file" id="image" className='w-full px-2 py-1.5 rounded-md border' {...register("image", { required: true })} /> */}
                     </div>
                 </div>
 

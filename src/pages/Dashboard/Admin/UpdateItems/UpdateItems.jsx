@@ -117,7 +117,7 @@ const UpdateItems = () => {
                     </div>
                 </div>
 
-                <input  type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500' value="Add Item" />
+                <input  type="submit" className='w-full py-1.5 rounded-md text-center font-medium border text-sm mt-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500' value="Update Item" />
             </form>
             <Toaster></Toaster>
         </section>

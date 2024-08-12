@@ -43,7 +43,7 @@ const Header = () => {
 
             <div className={`${profileFeatures ? 'top-[70px]' : user===null ? '-top-[700px]' : '-top-[700px]'} absolute z-50 border rounded-md w-[200px] right-0 bg-white`}>
                 <ul>
-                    <Link to='/dashboard/profile'><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Your Profile</li></Link>
+                    <Link to='/profile'><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Your Profile</li></Link>
                     <Link to='/dashboard'><li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full'>Dashboard</li></Link>
                     <li className='text-sm font-medium text-zinc-700 py-2 ps-3 hover:bg-gray-100 w-full' onClick={logOutHandler}>Sign out</li>
                 </ul>
