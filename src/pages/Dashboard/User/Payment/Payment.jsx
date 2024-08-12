@@ -3,7 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
 import CheckOut from './CheckOut';
 
-const stripePromise = loadStripe('');
+const stripePromise = loadStripe(import.meta.env.VITE_pg_pk);
 
 
 const Payment = () => {

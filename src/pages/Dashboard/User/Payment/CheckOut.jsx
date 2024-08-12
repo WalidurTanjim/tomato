@@ -30,7 +30,7 @@ const CheckOut = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}className='mt-10'>
             <CardElement
                 options={{
                     style: {
@@ -47,7 +47,7 @@ const CheckOut = () => {
                     }
                 }}
             ></CardElement>
-            <button type='submit'>Pay</button>
+            <button type='submit' className='border rounded-md py-1 px-5 text-sm font-medium text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-600 mt-3'>Pay</button>
         </form>
     );
 };
