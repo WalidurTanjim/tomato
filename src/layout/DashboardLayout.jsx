@@ -3,8 +3,10 @@ import Header from '../pages/sheared/Header/Header';
 import { NavLink, Outlet } from 'react-router-dom';
 import { HomeIcon, PlusIcon, ListBulletIcon, UserGroupIcon, CalendarIcon, BanknotesIcon, ShoppingCartIcon, SparklesIcon, BookmarkIcon } from '@heroicons/react/24/solid';
 import './styles.css';
+import useCart from '../hooks/useCart';
 
 const DashboardLayout = () => {
+    const [cart] = useCart();
     const isAdmin = false;
 
     return (
@@ -55,7 +57,7 @@ const DashboardLayout = () => {
                                         </NavLink>
 
                                         <NavLink to='/dashboard/cart'>
-                                            <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><ShoppingCartIcon className="me-2 size-4" /> My Cart</li>
+                                            <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><ShoppingCartIcon className="me-2 size-4" /> My Cart ({cart.length})</li>
                                         </NavLink>
 
                                         <NavLink to='/dashboard/review'>

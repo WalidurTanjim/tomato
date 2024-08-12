@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 
 const Cart = () => {
     const [cart, refetch] = useCart();
+    // console.log(cart);
     const axiosSecure = useAxiosSecure();
 
     // deleteHandler
