@@ -5,7 +5,7 @@ import { HomeIcon, PlusIcon, ListBulletIcon, UserGroupIcon, CalendarIcon, Bankno
 import './styles.css';
 
 const DashboardLayout = () => {
-    const isAdmin = true;
+    const isAdmin = false;
 
     return (
         <div>
@@ -50,8 +50,8 @@ const DashboardLayout = () => {
                                             <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><CalendarIcon className="me-2 size-4" /> Reservation</li>
                                         </NavLink>
 
-                                        <NavLink to='/dashboard/paymentMethod'>
-                                            <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><BanknotesIcon className="me-2 size-4" /> Payment Method</li>
+                                        <NavLink to='/dashboard/paymentHistory'>
+                                            <li className='text-zinc-700 flex items-center py-2 border-b mb-1 ps-2'><BanknotesIcon className="me-2 size-4" /> Payment History</li>
                                         </NavLink>
 
                                         <NavLink to='/dashboard/cart'>

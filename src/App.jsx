@@ -14,6 +14,7 @@ import ManageItems from './pages/Dashboard/Admin/ManageItems/ManageItems'
 import UpdateItems from './pages/Dashboard/Admin/UpdateItems/UpdateItems'
 import AllUsers from './pages/Dashboard/Admin/AllUsers/AllUsers'
 import Profile from './pages/Dashboard/Profile/Profile'
+import Payment from './pages/Dashboard/User/Payment/Payment'
 
 function App() {
   const router = createBrowserRouter([
@@ -33,7 +34,8 @@ function App() {
       {path: '/dashboard/users', element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>},
 
       // user related routes
-      {path: '/dashboard/cart', element: <PrivateRoute><Cart></Cart></PrivateRoute>}
+      {path: '/dashboard/cart', element: <PrivateRoute><Cart></Cart></PrivateRoute>},
+      {path: '/dashboard/payment', element: <PrivateRoute><Payment></Payment></PrivateRoute>}
     ]}
   ])
 

@@ -35,7 +35,7 @@ const Cart = () => {
         <div className='px-5'>
             <div className="flex items-center justify-between mb-5">
                 <h1 className='px-5 text-2xl font-medium'>Total dish: {cart?.length}</h1>
-                <Link><button className='border-none outline-none rounded-md py-1 px-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500'>Pay</button></Link>
+                <Link to='/dashboard/payment'><button className='border-none outline-none rounded-md py-1 px-3 text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-500 disabled:bg-gray-300' disabled={cart.length === 0}>Pay</button></Link>
             </div>
 
             <div className="overflow-x-auto">
